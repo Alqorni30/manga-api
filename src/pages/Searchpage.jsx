@@ -27,8 +27,8 @@ const Searchpage = () => {
   return (
     <div className="p-4 ">
       {loading ? (
-        <div className="flex justify-center  h-screen">
-          <div class="custom-loader"></div>
+        <div className="flex justify-center h-screen">
+          <div className="custom-loader"></div>
         </div>
       ) : searched && manga.length === 0 ? (
         <div className="my-4">
@@ -49,7 +49,7 @@ const Searchpage = () => {
                 <Link to={`${m.mal_id}`} className="cursor-pointer">
                   <img
                     src={m.images.webp.image_url}
-                    className="rounded-lg h-[280px]"
+                    className="rounded-lg lg:h-[250px] lg:w-[180px] h-[200px] w-[150px]"
                     alt={m.title}
                   />
                   <h3 className="font-semibold p-2 text-white">{m.title}</h3>

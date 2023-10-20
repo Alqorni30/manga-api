@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineHome, AiOutlineArrowRight } from "react-icons/ai";
 
-const Topmanga = () => {
+
+const Populer = () => {
   const [manga, setManga] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getDataManga = async () => {
-    const res = await fetch("https://api.jikan.moe/v4/top/manga?limit=10");
+    const res = await fetch("https://api.jikan.moe/v4/top/manga");
     const mangaList = await res.json();
 
     setManga(mangaList.data);
@@ -20,6 +22,12 @@ const Topmanga = () => {
   return (
     <>
       <div>
+        <div className="flex justify-center items-center gap-2 mb-2">
+            <Link to={"/"} >
+            <button className="hover:text-orange-400 flex justify-center items-center gap-2 text-white text-lg font-semibold"><AiOutlineHome/> back home | </button>
+            </Link>
+            <h3 className="text-orange-400 text-lg font-bold">Populer</h3>
+        </div>
         {loading ? (
           <div className="flex justify-center  h-screen mt-4">
             <div className="custom-loader"></div>
@@ -47,4 +55,4 @@ const Topmanga = () => {
   );
 };
 
-export default Topmanga;
+export default Populer;
