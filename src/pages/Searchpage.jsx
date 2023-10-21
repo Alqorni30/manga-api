@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
+
 
 const Searchpage = () => {
   const { keyword } = useParams();
@@ -9,7 +11,6 @@ const Searchpage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Lakukan pencarian dan perbarui 'manga' saat parameter 'keyword' berubah.
     if (keyword) {
       fetchData(keyword);
     }
@@ -25,9 +26,14 @@ const Searchpage = () => {
   };
 
   return (
-    <div className="p-4 ">
+    <div className="p-4 mb-10">
+       <div className="flex justify-center items-center gap-2 mb-2">
+            <Link to={"/"} >
+            <button className="hover:text-orange-400 flex justify-center items-center gap-2 text-white text-lg font-semibold"><AiOutlineHome/> back home</button>
+            </Link>
+        </div>
       {loading ? (
-        <div className="flex justify-center h-screen">
+        <div className="flex justify-center items-center min-h-screen">
           <div className="custom-loader"></div>
         </div>
       ) : searched && manga.length === 0 ? (
@@ -46,13 +52,13 @@ const Searchpage = () => {
           <div className="grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-4">
             {manga.map((m, index) => (
               <div key={index} className="p-4">
-                <Link to={`${m.mal_id}`} className="cursor-pointer">
+                <Link to={`${m.mal_id}`} className="transition-all">
                   <img
                     src={m.images.webp.image_url}
                     className="rounded-lg lg:h-[250px] lg:w-[180px] h-[200px] w-[150px]"
                     alt={m.title}
                   />
-                  <h3 className="font-semibold p-2 text-white">{m.title}</h3>
+                  <h3 className="font-semibold p-2 text-white hover:text-orange-400">{m.title}</h3>
                 </Link>
               </div>
             ))}

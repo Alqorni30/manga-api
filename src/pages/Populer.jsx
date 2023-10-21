@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineHome, AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 
 
 const Populer = () => {
@@ -21,7 +21,7 @@ const Populer = () => {
 
   return (
     <>
-      <div>
+      <div className="mb-10">
         <div className="flex justify-center items-center gap-2 mb-2">
             <Link to={"/"} >
             <button className="hover:text-orange-400 flex justify-center items-center gap-2 text-white text-lg font-semibold"><AiOutlineHome/> back home | </button>
@@ -29,7 +29,7 @@ const Populer = () => {
             <h3 className="text-orange-400 text-lg font-bold">Populer</h3>
         </div>
         {loading ? (
-          <div className="flex justify-center  h-screen mt-4">
+          <div className="flex justify-center items-center min-h-screen">
             <div className="custom-loader"></div>
           </div>
         ) : (

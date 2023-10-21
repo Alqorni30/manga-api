@@ -16,28 +16,18 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <div className="flex justify-between items-center text-white gap-4 font-bold">
               <Link to='/'>
-                <h5 className="font-semibold text-xl text-orange-300 flex justify-center items-center gap-1">
+                <h5 className="font-bold text-xl text-orange-300 flex justify-center items-center gap-1">
                   Wibu.id
                 </h5>
               </Link>
               <ul className="hidden lg:flex space-x-4">
-                <li className="hover:bg-gray-500 p-2 cursor-pointer rounded">
+                <li className="hover:bg-orange-400 p-2 cursor-pointer rounded">
                   <NavLink to="/" className="text-white">
                     Home
                   </NavLink>
                 </li>
-                <li className="hover:bg-gray-500 p-2 cursor-pointer rounded">
-                  <NavLink to="/" className="text-white">
-                    Genre
-                  </NavLink>
-                </li>
-                <li className="hover:bg-gray-500 p-2 cursor-pointer rounded">
-                  <NavLink to="/" className="text-white">
-                    Release
-                  </NavLink>
-                </li>
-                <li className="hover:bg-gray-500 p-2 cursor-pointer rounded">
-                  <NavLink to="/" className="text-white">
+                <li className="hover:bg-orange-400 p-2 cursor-pointer rounded">
+                  <NavLink to="/movies" className="text-white">
                     Movies
                   </NavLink>
                 </li>

@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import Searchpage from "./pages/Searchpage";
 import Searchinput from "./components/Searchinput";
 import Populer from "./pages/Populer";
+import Footer from "./components/Footer";
+import Movies from "./pages/Movies";
+import NotFound from "./pages/NotFound";
 
 
 function App() {
@@ -17,7 +20,10 @@ function App() {
           <Route path="/" Component={Home}></Route>
           <Route path="/search/:keyword" Component={Searchpage}></Route>
           <Route path="/populer" Component={Populer}></Route>
+          <Route path="/movies" Component={Movies}></Route>
+          <Route path="*" Component={NotFound}></Route>
         </Routes>
+        <Footer/>
       </Router>
     </>
   );

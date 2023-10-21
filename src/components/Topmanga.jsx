@@ -19,25 +19,23 @@ const Topmanga = () => {
 
   return (
     <>
-      <div>
+      <div className="mb-10">
         {loading ? (
-          <div className="flex justify-center  h-screen mt-4">
+          <div className="flex justify-center items-center min-h-screen">
             <div className="custom-loader"></div>
           </div>
         ) : (
           <div className="grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-4">
             {manga.map((m, index) => {
               return (
-                <div key={index} className="p-4">
-                  <Link to={`${m.mal_id}`} >
+                  <Link to={`${m.mal_id}`} key={index} className="p-4 text-white transition-all" >
                     <img
                       src={m.images.webp.image_url}
                       className="rounded-lg lg:h-[250px] lg:w-[180px] h-[200px] w-[150px] "
                       alt="manga"
                     />
-                    <h3 className="font-semibold p-2 text-white">{m.title}</h3>
+                    <h3 className="font-semibold text-xl p-2 text-white hover:text-orange-400">{m.title}</h3>
                   </Link>
-                </div>
               );
             })}
           </div>
