@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
+import { getApiManga } from "../service/api";
 
 
 const Populer = () => {
@@ -8,8 +9,7 @@ const Populer = () => {
   const [loading, setLoading] = useState(true);
 
   const getDataManga = async () => {
-    const res = await fetch("https://api.jikan.moe/v4/top/manga");
-    const mangaList = await res.json();
+    const mangaList = await getApiManga("top/manga")
 
     setManga(mangaList.data);
     setLoading(false);
@@ -37,7 +37,7 @@ const Populer = () => {
             {manga.map((m, index) => {
               return (
                 <div key={index} className="p-4">
-                  <Link to={`${m.mal_id}`} >
+                  <Link to={`/manga/${m.mal_id}`}>
                     <img
                       src={m.images.webp.image_url}
                       className="rounded-lg lg:h-[250px] lg:w-[180px] h-[200px] w-[150px] "

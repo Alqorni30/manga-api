@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getApiManga } from "../service/api";
 
 const Topmanga = () => {
   const [manga, setManga] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getDataManga = async () => {
-    const res = await fetch("https://api.jikan.moe/v4/top/manga?limit=10");
-    const mangaList = await res.json();
+  const fectDataManga = async () => {
+    const mangaList = await getApiManga("top/manga", "limit=10");
 
     setManga(mangaList.data);
     setLoading(false);
   };
 
   useEffect(() => {
-    getDataManga();
+    fectDataManga();
   }, []);
 
   return (
@@ -28,7 +28,7 @@ const Topmanga = () => {
           <div className="grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-4">
             {manga.map((m, index) => {
               return (
-                  <Link to={`${m.mal_id}`} key={index} className="p-4 text-white transition-all" >
+                  <Link to={`/manga/${m.mal_id}`} key={index} className="p-4 text-white transition-all" >
                     <img
                       src={m.images.webp.image_url}
                       className="rounded-lg lg:h-[250px] lg:w-[180px] h-[200px] w-[150px] "

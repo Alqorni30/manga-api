@@ -8,6 +8,7 @@ import Populer from "./pages/Populer";
 import Footer from "./components/Footer";
 import Movies from "./pages/Movies";
 import NotFound from "./pages/NotFound";
+import MangaDetail from "./pages/MangaDetail";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" Component={Home}></Route>
           <Route path="/search/:keyword" Component={Searchpage}></Route>
+          <Route path="/manga/:id" Component={MangaDetail}></Route>
           <Route path="/populer" Component={Populer}></Route>
           <Route path="/movies" Component={Movies}></Route>
           <Route path="*" Component={NotFound}></Route>

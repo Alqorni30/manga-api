@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
+import { getApiManga } from "../service/api";
 
 
 const Searchpage = () => {
@@ -10,20 +11,20 @@ const Searchpage = () => {
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (keyword) {
-      fetchData(keyword);
-    }
-  }, [keyword]);
-
+  
   const fetchData = async (keyword) => {
     setLoading(true);
-    const res = await fetch(`https://api.jikan.moe/v4/manga?q=${keyword}`);
-    const mangaList = await res.json();
+    const mangaList = await getApiManga("manga", `q=${keyword}`);
     setManga(mangaList.data);
     setSearched(true);
     setLoading(false);
   };
+
+    useEffect(() => {
+      if (keyword) {
+        fetchData(keyword);
+      }
+    }, [keyword]);
 
   return (
     <div className="p-4 mb-10">
@@ -52,7 +53,7 @@ const Searchpage = () => {
           <div className="grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-4">
             {manga.map((m, index) => (
               <div key={index} className="p-4">
-                <Link to={`${m.mal_id}`} className="transition-all">
+                <Link to={`/manga/${m.mal_id}`} className="transition-all">
                   <img
                     src={m.images.webp.image_url}
                     className="rounded-lg lg:h-[250px] lg:w-[180px] h-[200px] w-[150px]"
